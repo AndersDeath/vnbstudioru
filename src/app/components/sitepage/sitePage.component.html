@@ -1,0 +1,37 @@
+<div class="Aligner" [style.height.px]="AlignerHeight">
+  <div class="Aligner-item">
+    <div class="ta-c">
+      <img src="../assets/logo.png" height="100" alt="">
+    </div>
+    <span class="px20"></span>
+    <mat-card class="main-card">
+      <app-material-accordion-list [title]="'Мобильные приложения'" [items]="mobileList"></app-material-accordion-list>
+      <mat-accordion class="button-list">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h4>Контакты</h4>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <ul>
+            <li>Почта -
+              <a href="mailto:andersdeath@yandex.ru">andersdeath@yandex.ru</a>
+            </li>
+            <li>Скайп - vladnbol</li>
+            <li>Блог - <a href="http://andersdeath.ru" target="_blank">andersdeath.ru</a></li>
+            <li>Телеграм канал - <a href="https://t.me/vnbstudio" target="_blank">https://t.me/vnbstudio</a></li>
+          </ul>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+    <span class="px20"></span>
+    <div class="main-card-nav" style="text-align:right">
+      <a href="http://i.vnbstudio.ru" target="_blank" matTooltip="Большаков Владимир" [matTooltipPosition]="'after'" mat-raised-button>
+          <mat-icon>nature_people</mat-icon> Об Авторе
+      </a>
+      <a href="http://tags.vnbstudio.ru" target="_blank" matTooltip="Конвертер тегов" [matTooltipPosition]="'after'" mat-raised-button>
+        <mat-icon>autorenew</mat-icon> Конвертер тегов
+    </a>
+    </div>
+  </div>
+</div>
