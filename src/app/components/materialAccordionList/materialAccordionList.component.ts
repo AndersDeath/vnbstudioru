@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { DataService } from '../../services/data.service';
 
 @Component({
     selector: 'app-material-accordion-list',
