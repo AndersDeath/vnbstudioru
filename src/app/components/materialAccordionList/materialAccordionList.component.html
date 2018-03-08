@@ -7,7 +7,7 @@
     </mat-expansion-panel-header>
     <mat-list role="list">
       <span *ngFor="let item of items">
-        <mat-list-item role="listitem " class="active-item"  matTooltip="{{item.tooltip}}" [matTooltipPosition]="'above'" (click)="goTo(item.href)">
+        <mat-list-item role="listitem " class="active-item" (click)="goTo(item.href)">
           <img *ngIf="item.ico" src="../assets/{{item.ico}}" style="width:24px; height:24px;" class="mr-1 float-left" alt=""> {{item.title}}
         </mat-list-item>
         <mat-divider [inset]="true"></mat-divider>

@@ -1,15 +1,17 @@
 import { Component, Inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { DataService } from '../../services/data.service';
+
 @Component({
   selector: 'app-site-page',
   templateUrl: './sitePage.component.html',
   styleUrls: ['./sitePage.component.sass']
 })
 export class SitePageComponent {
-  mobileList: any;
-  chatData = {};
-  constructor(public dialog: MatDialog) {
+  mobileList: any[];
+  chatData = [];
+  constructor(public dialog: MatDialog, private data: DataService) {
 
   }
   openDialog(): void {
@@ -24,37 +26,9 @@ export class SitePageComponent {
   }
 
   ngOnInit(): void {
-    this.mobileList = [
-      {
-        "title": "Чем заняться? Идеи!",
-        "href": "https://play.google.com/store/apps/details?id=com.vnbstudio.randomidea",
-        "ico": "randomidea.webp"
-      },
-      {
-        "title": "HardCore Dots",
-        "href": "https://play.google.com/store/apps/details?id=com.vnbstudio.hardcoredots",
-        "ico": "hardcoredots.webp"
-      },
-      {
-        "title": "Хокку и Танка",
-        "href": "https://play.google.com/store/apps/details?id=com.vnbstudio.randomhokkutanka",
-        "ico": "hokkutanka.webp"
-      },
-      {
-        "title": "Генератор Паролей",
-        "href": "https://play.google.com/store/apps/details?id=com.vnbstudio.passwordgenerator",
-        "ico": "passwordgenerator.webp"
-      },
-      {
-        "title": "Цитаты. Случайные цитаты.",
-        "href": "https://play.google.com/store/apps/details?id=com.vnbstudio.randomquote",
-        "ico": "randomquotes.webp"
-      },
-      {
-        "title": "Circle Kill",
-        "href": "https://play.google.com/store/apps/details?id=com.vnbstudio.circlekill",
-        "ico": "circlekill.webp"
-      }]
+    this.data.getData().subscribe(data => {
+      this.mobileList = data['links']['mobile'].reverse();
+    });
   }
 }
 
@@ -68,7 +42,8 @@ export class Chat {
 
   constructor(
     public dialogRef: MatDialogRef<Chat>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    // @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
 
   onNoClick(): void {
     this.dialogRef.close();
