@@ -39,7 +39,7 @@ export class SitePageComponent {
   templateUrl: 'chat.html',
 })
 export class Chat {
-
+data;
   constructor(
     public dialogRef: MatDialogRef<Chat>,
     // @Inject(MAT_DIALOG_DATA) public data: any
