@@ -1,22 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
-
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-site-page',
   templateUrl: './sitePage.component.html',
   styleUrls: ['./sitePage.component.sass']
 })
 export class SitePageComponent {
-  AlignerHeight: any;
   mobileList: any;
-  constructor() {
+  chatData = {};
+  constructor(public dialog: MatDialog) {
 
   }
-  ngOnInit(): void {
-    this.setAlignerHeight();
-    window.addEventListener("resize", () => {
-      this.setAlignerHeight();
+  openDialog(): void {
+    let dialogRef = this.dialog.open(Chat, {
+      width: '600px',
+      data: this.chatData
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.chatData = result;
+    });
+  }
+
+  ngOnInit(): void {
     this.mobileList = [
       {
         "title": "Чем заняться? Идеи!",
@@ -49,7 +56,22 @@ export class SitePageComponent {
         "ico": "circlekill.webp"
       }]
   }
-  setAlignerHeight() {
-    this.AlignerHeight = window.innerHeight - 120;
+}
+
+
+
+@Component({
+  selector: 'chat',
+  templateUrl: 'chat.html',
+})
+export class Chat {
+
+  constructor(
+    public dialogRef: MatDialogRef<Chat>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
+
 }
