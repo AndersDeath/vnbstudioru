@@ -10,6 +10,7 @@ import { SitePageComponent, Chat } from './components/sitepage/sitePage.componen
 import { MaterialAccordionListComponent } from './components/materialAccordionList/materialAccordionList.component';
 
 import { DataService } from './services/data.service';
+import { PathService } from './services/path.service';
 
 import {
   MatAutocompleteModule,
@@ -94,7 +95,7 @@ import {
     MatTooltipModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [DataService],
+  providers: [DataService,PathService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DataService } from '../../services/data.service';
+import { PathService } from '../../services/path.service';
 
 @Component({
   selector: 'app-site-page',
@@ -11,8 +12,14 @@ import { DataService } from '../../services/data.service';
 export class SitePageComponent {
   mobileList: any[];
   chatData = [];
-  constructor(public dialog: MatDialog, private data: DataService) {
+  url:string;
 
+  constructor(
+      public dialog: MatDialog,
+      private data: DataService,
+      private path: PathService
+  ) {
+      this.url = this.path.getStorage();
   }
   openDialog(): void {
     let dialogRef = this.dialog.open(Chat, {
@@ -39,7 +46,7 @@ export class SitePageComponent {
   templateUrl: 'chat.html',
 })
 export class Chat {
-data;
+  data;
   constructor(
     public dialogRef: MatDialogRef<Chat>,
     // @Inject(MAT_DIALOG_DATA) public data: any

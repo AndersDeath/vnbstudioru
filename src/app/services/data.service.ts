@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { PathService } from './path.service';
 
 @Injectable()
 export class DataService {
-  apiUrl: string = 'http://course.loc/';
-  constructor(private http: HttpClient) {
-
+  apiUrl: string;
+  constructor(private http: HttpClient, private path: PathService) {
+    this.apiUrl = path.getPath();
   }
 
   public getData() {
