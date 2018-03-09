@@ -3,6 +3,8 @@ import { DatePipe } from '@angular/common';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DataService } from '../../services/data.service';
 import { PathService } from '../../services/path.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-site-page',
@@ -12,14 +14,14 @@ import { PathService } from '../../services/path.service';
 export class SitePageComponent {
   mobileList: any[];
   chatData = [];
-  url:string;
+  url: string;
 
   constructor(
-      public dialog: MatDialog,
-      private data: DataService,
-      private path: PathService
+    public dialog: MatDialog,
+    private data: DataService,
+    private path: PathService
   ) {
-      this.url = this.path.getStorage();
+    this.url = this.path.getStorage();
   }
   openDialog(): void {
     let dialogRef = this.dialog.open(Chat, {
@@ -46,13 +48,73 @@ export class SitePageComponent {
   templateUrl: 'chat.html',
 })
 export class Chat {
-  data;
+  data: any = {
+    name: '',
+    email: '',
+    text: ''
+  };
+  captchaTest: boolean = false
+  dataForm: FormGroup;
   constructor(
     public dialogRef: MatDialogRef<Chat>,
+    private http: DataService,
+    public snackBar: MatSnackBar
     // @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
-  onNoClick(): void {
+  ngOnInit(): void {
+    this.dataForm = new FormGroup({
+      name: new FormControl(this.data.name, [
+        Validators.required
+      ]),
+      email: new FormControl(this.data.email, [
+        Validators.email,
+        Validators.required
+      ]),
+      text: new FormControl(this.data.text, [
+        Validators.required
+      ])
+    })
+  }
+
+  get name() {
+    return this.dataForm.get('name');
+  }
+
+  get email() {
+    return this.dataForm.get('email');
+  }
+
+  get text() {
+    return this.dataForm.get('text');
+  }
+
+  ifCaptchaCorrect(res) {
+    this.http.checkCaptcha(res).subscribe((res: any) => {
+      console.log(JSON.parse(res));
+      if (JSON.parse(res).success) {
+        this.captchaTest = true;
+      }
+    });
+  }
+
+  cancel(): void {
+    this.data = {
+      name: '',
+      email: '',
+      text: ''
+    }
+    this.dialogRef.close();
+  }
+
+  ok() {
+    this.http.sendMessage(this.data.name, this.data.email, this.data.text).subscribe((res: any) => {
+      if (res.messageId !== 'false') {
+        this.snackBar.open('Cпасибо! Сообщение успешно отправлено.', '', {
+          duration: 3000
+        });
+      }
+    });
     this.dialogRef.close();
   }
 

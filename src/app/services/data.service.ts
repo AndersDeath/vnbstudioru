@@ -25,4 +25,24 @@ export class DataService {
 
     return this.http.get(this.apiUrl + 'search/set/', options);
   }
+
+  public checkCaptcha(control) {
+    const options =
+      {
+        params: new HttpParams().set('control', control),
+      };
+
+    return this.http.get(this.apiUrl + 'captcha', options);
+  }
+
+  public sendMessage(name, email, text) {
+    const options =
+      {
+        params: new HttpParams()
+          .set('name', name)
+          .set('email', email)
+          .set('text', text),
+      };
+    return this.http.get(this.apiUrl + 'owlmessage', options);
+  }
 }

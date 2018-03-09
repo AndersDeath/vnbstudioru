@@ -2,13 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './constants/route.constant';
 import { AppComponent } from './components/app/app.component';
 import { SitePageComponent, Chat } from './components/sitepage/sitePage.component';
 import { MaterialAccordionListComponent } from './components/materialAccordionList/materialAccordionList.component';
-
+import { RecaptchaModule } from 'ng-recaptcha';
 import { DataService } from './services/data.service';
 import { PathService } from './services/path.service';
 
@@ -60,6 +60,7 @@ import {
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatButtonModule,
@@ -93,6 +94,7 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    RecaptchaModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [DataService,PathService],

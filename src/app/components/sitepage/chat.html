@@ -1,27 +1,30 @@
 <h1 mat-dialog-title>Задать вопрос</h1>
-<div mat-dialog-content>
-
-  <form class="example-form">
+<div mat-dialog-content style="min-height:370px;">
+  <form [formGroup]="dataForm" #formDir="ngForm">
     <mat-form-field class="w100p">
-      <input matInput placeholder="Имя" required>
+      <input matInput placeholder="Имя" formControlName="name" [(ngModel)]="data.name" required>
     </mat-form-field>
+    <div style='color:#f44336; font-family:Roboto, "Helvetica Neue", sans-serif;' *ngIf="name.invalid && (name.dirty || name.touched)">
+         Поле имя обязательно к заполению
+    </div>
+    <span class="px20"></span>
     <mat-form-field class="w100p">
-      <input matInput   type="email" placeholder="Почта" required>
+      <input matInput type="email" formControlName="email" placeholder="Почта" [(ngModel)]="data.email" required>
     </mat-form-field>
-
+    <div style='color:#f44336; font-family:Roboto, "Helvetica Neue", sans-serif;' *ngIf="email.invalid && (email.dirty || email.touched)">
+         Поле "Почта" обязательно к заполению и должно иметь формат name@domain.com
+    </div>
+    <span class="px20"></span>
     <mat-form-field class="w100p">
-      <textarea matInput placeholder="Сообщение" required></textarea>
+      <textarea matInput placeholder="Сообщение" formControlName="text" [(ngModel)]="data.text" required></textarea>
     </mat-form-field>
+    <div style='color:#f44336; font-family:Roboto, "Helvetica Neue", sans-serif;' *ngIf="text.invalid && (text.dirty || text.touched)">
+         Напишите сообщение
+    </div>
   </form>
-
-
+  <re-captcha (resolved)="ifCaptchaCorrect($event)" siteKey="SITE_KEY"></re-captcha>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Отменить</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Отправить</button>
+  <button mat-button (click)="cancel()">Отменить</button>
+  <button mat-button (click)="ok()" [disabled]="(dataForm.invalid==true || captchaTest == false)">Отправить</button>
 </div>
-
-
-<!-- Copyright 2018 Google Inc. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license -->
