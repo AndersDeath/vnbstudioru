@@ -1,40 +1,66 @@
-<div class="Aligner" [style.height.px]="AlignerHeight">
-  <div class="Aligner-item">
-    <div class="ta-c">
-      <img src="../assets/logo.png" height="100" alt="">
+
+<span class="px20"></span>
+<span class="px20"></span>
+<span class="px20"></span>
+
+<div class="ta-c">
+  <img src="{{url}}logo.png" height="110" alt="">
+</div>
+<span class="px20"></span>
+<span class="px20"></span>
+<span class="px20"></span>
+
+<div class="main-card">
+  <mat-card class="app-card">
+    <img src="{{url}}vseploho.webp" style="width:50%; margin: 0 auto; display:block" alt="">
+    <div class="app-card-content">
+      Приложение, в котором вы сможете узнать правду о своем доходе. Узнайте, сколько вы зарабатываете в год/неделю/час/минуту/секунду.
     </div>
-    <span class="px20"></span>
-    <mat-card class="main-card">
-      <app-material-accordion-list [title]="'Мобильные приложения'" [items]="mobileList"></app-material-accordion-list>
-      <mat-accordion class="button-list">
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <h4>Контакты</h4>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <ul>
-            <li>Почта -
-              <a href="mailto:andersdeath@yandex.ru">andersdeath@yandex.ru</a>
-            </li>
-            <li>Скайп - vladnbol</li>
-            <li>Блог - <a href="http://andersdeath.ru" target="_blank">andersdeath.ru</a></li>
-            <li>Телеграм канал - <a href="https://t.me/vnbstudio" target="_blank">https://t.me/vnbstudio</a></li>
-          </ul>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </mat-card>
-    <span class="px20"></span>
-    <div class="main-card-nav" style="text-align:right">
-      <a href="http://i.vnbstudio.ru" target="_blank" matTooltip="Большаков Владимир" [matTooltipPosition]="'after'" mat-raised-button>
-          <mat-icon>nature_people</mat-icon> Об Авторе
-      </a>
-      <a href="http://tags.vnbstudio.ru" target="_blank" matTooltip="Конвертер тегов" [matTooltipPosition]="'after'" mat-raised-button>
-        <mat-icon>autorenew</mat-icon> Конвертер тегов
-    </a>
-    <a href="http://lvmps.vnbstudio.ru" target="_blank" matTooltip="Лучшая в мире поисковая строка" [matTooltipPosition]="'after'" mat-raised-button>
-      <mat-icon>search</mat-icon> ЛВМПС
+    <a target="_blank" href="https://play.google.com/store/apps/details?id=com.vnbstudio.vseploho" mat-raised-button color="primary" style="width:100%;" name="button">Скaчать в Google Play</a>
+  </mat-card>
+  <mat-card class="app-card">
+    <img src="{{url}}randomidea.webp" style="width:50%; margin: 0 auto; display:block" alt="">
+    <div class="app-card-content">
+      Нечем заняться? Плохое настроение? Воспользуйтесь генератором идей и занятий.
+    </div>
+    <a target="_blank" href="https://play.google.com/store/apps/details?id=com.vnbstudio.randomidea" mat-raised-button color="primary" style="width:100%;" name="button">Скaчать в Google Play</a>
+
+  </mat-card>
+  <mat-card class="app-card">
+    <img src="{{url}}hokkutanka.webp" style="width:50%; margin: 0 auto; display:block" alt="">
+    <div class="app-card-content">
+      Настоящие японские хокку и танка в одном сборнике. Лучшие поэты средневековой Японии в вашем распоряжении.
+    </div>
+    <a target="_blank" href="https://play.google.com/store/apps/details?id=com.vnbstudio.randomhokkutanka" mat-raised-button color="primary" style="width:100%;" name="button">Скaчать в Google Play</a>
+
+  </mat-card>
+</div>
+<!-- <span class="px20"></span> -->
+<span class="px20"></span>
+
+<div class="main-card">
+  <app-material-accordion-list [tooltip]="false" [title]="'Все мобильные приложения'" [items]="mobileList"></app-material-accordion-list>
+  <mat-accordion class="button-list">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h4>Контакты</h4>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ul>
+        <li>Почта -
+          <a href="mailto:andersdeath@yandex.ru">andersdeath@yandex.ru</a>
+        </li>
+        <li>Скайп - vladnbol</li>
+        <li>Блог - <a href="http://andersdeath.ru" target="_blank">andersdeath.ru</a></li>
+        <li>Телеграм канал - <a href="https://t.me/vnbstudio" target="_blank">https://t.me/vnbstudio</a></li>
+      </ul>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<span class="px20"></span>
+<div class="main-card" style="text-align:right">
+  <a mat-raised-button (click)="openDialog()">
+    <mat-icon>chat</mat-icon> Отправить сообщение
   </a>
-    </div>
-  </div>
 </div>

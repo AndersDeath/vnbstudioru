@@ -1,3 +1,21 @@
-<p>
-  <router-outlet></router-outlet>
-</p>
+<mat-toolbar color="secondary" class="toolbar">
+  <mat-toolbar-row>
+    <span class="spacer"></span>
+    <a routerLink="/" color="primary" matTooltip="Студия" [matTooltipPosition]="'after'" mat-raised-button>
+      <mat-icon>android</mat-icon> VNBStudio
+    </a>
+    <a routerLink="/i" color="primary" matTooltip="Большаков Владимир" [matTooltipPosition]="'after'" mat-raised-button>
+      <mat-icon>nature_people</mat-icon> Об Авторе
+    </a>
+    <a routerLink="/tags" color="primary" matTooltip="Конвертер тегов" [matTooltipPosition]="'after'" mat-raised-button>
+      <mat-icon>autorenew</mat-icon> Конвертер тегов
+    </a>
+    <a routerLink="/lvmps"  color="primary" matTooltip="Лучшая в мире поисковая строка" [matTooltipPosition]="'after'" mat-raised-button>
+      <mat-icon>search</mat-icon> ЛВМПС
+    </a>
+    <a routerLink="/ulog"  color="primary" matTooltip="Лог обновлений" [matTooltipPosition]="'after'" mat-raised-button>
+      <mat-icon>update</mat-icon> Update Log
+    </a>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

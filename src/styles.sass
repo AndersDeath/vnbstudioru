@@ -1,9 +1,13 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css"
+$url: 'http://api.vnbstudio.ru/img/'
 
+body
+    margin: 0 auto
+    padding: 0
 body
     background-size: cover
     background-attachment: fixed
-    background-image: url('./assets/bg.jpg')
+    background-image: url('#{$url}bg.jpg')
 
 body::-webkit-scrollbar
     background-color: rgb(255, 255, 255)
@@ -19,12 +23,27 @@ body::-webkit-scrollbar-thumb
 .main-card
     width: 800px
     margin: 0 auto
+    overflow: hidden
 .main-card-nav
     width: 848px
     margin: 0 auto
     padding: 0 0 0 0 !important
 .main-card-nav a:not(:last-child)
     margin-right: 10px
+.main-card .app-card:not(:last-child)
+    margin: 0 20px 0 0
+.app-card
+    width: 205px
+    float: left
+    height: 245px
+    background: #eeeeee
+.app-card:hover
+    background: #fff
+    transition: .3s
+.app-card-content
+    padding: 5px
+    font-size: 14px
+    height: 104px
 h3.mt40
     margin-top: 40px
 
@@ -41,19 +60,5 @@ span.px40
 span.px20
     display: block
     height: 20px
-.Aligner
-    display: flex
-    align-items: center
-    justify-content: center
-
-
-.Aligner-item
-    // max-width: 50%
-.Aligner-item--top
-    align-self: flex-start
-
-
-.Aligner-item--bottom
-    align-self: flex-end
 .button-list button
     margin: 5px
