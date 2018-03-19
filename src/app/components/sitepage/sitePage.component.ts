@@ -5,6 +5,7 @@ import { DataService } from '../../services/data.service';
 import { PathService } from '../../services/path.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-site-page',
@@ -19,9 +20,25 @@ export class SitePageComponent {
   constructor(
     public dialog: MatDialog,
     private data: DataService,
-    private path: PathService
+    private path: PathService,
+    private router: Router
   ) {
     this.url = this.path.getStorage();
+    var url_string = window.location.href; //window.location.href
+    var url = new URL(url_string);
+    var c = url.searchParams.get("goto");
+    if (c === 'i') {
+      this.router.navigate(['i']);
+    } else if (c === 'tags') {
+      this.router.navigate(['tags']);
+    }
+    else if (c === 'lvmps') {
+      this.router.navigate(['lvmps']);
+    } else if (c === 'ulog') {
+      this.router.navigate(['ulog']);
+    } else {
+      this.router.navigate(['']);
+    }
   }
   openDialog(): void {
     let dialogRef = this.dialog.open(Chat, {

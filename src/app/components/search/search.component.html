@@ -1,0 +1,36 @@
+<span class="px20"></span>
+<span class="px20"></span>
+<mat-card class="main-card">
+  <mat-form-field class="input-width">
+    <input [(ngModel)]="searchValue" appAutofocus matInput placeholder="Лучшая в мире поисковая строка" value="">
+  </mat-form-field>
+  <div style="height:18px;">
+    <mat-radio-group [(ngModel)]="searchToggle">
+      <mat-radio-button color="primary" [value]="'yandexSearch'">Yandex</mat-radio-button>
+      <mat-radio-button color="primary" [value]="'googleSearch'">Google</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div style="text-align:right; font-size:12px;">
+    Лучшая в мире поисковая строка: v0.0.3
+  </div>
+</mat-card>
+<span class="px20"></span>
+<mat-card class="main-card" *ngIf="searchHistory.length > 0">
+  <h4 class="mt40">История запросов</h4>
+  <mat-list *ngFor="let item of searchHistory" (click)="searchFromHistory(item.text, item.type)">
+    <mat-list-item>
+      <table>
+        <tr>
+          <td> {{item.type[0]}}: {{item.text}}</td>
+        </tr>
+        <tr>
+          <td style="font-size:10px"> {{item.date | date:'HH:mm dd-MM-yyyy'}}
+          </td>
+        </tr>
+      </table>
+    </mat-list-item>
+    <mat-divider [inset]="true"></mat-divider>
+  </mat-list>
+  <span class="px20"></span>
+  <button color="primary" mat-raised-button type="button" name="button" (click)="cleanHistory()">Очистить историю</button>
+</mat-card>

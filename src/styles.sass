@@ -1,5 +1,9 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css"
 $url: 'http://api.vnbstudio.ru/img/'
+
+body
+    margin: 0 auto
+    padding: 0
 body
     background-size: cover
     background-attachment: fixed
@@ -19,12 +23,27 @@ body::-webkit-scrollbar-thumb
 .main-card
     width: 800px
     margin: 0 auto
+    overflow: hidden
 .main-card-nav
     width: 848px
     margin: 0 auto
     padding: 0 0 0 0 !important
 .main-card-nav a:not(:last-child)
     margin-right: 10px
+.main-card .app-card:not(:last-child)
+    margin: 0 20px 0 0
+.app-card
+    width: 205px
+    float: left
+    height: 245px
+    background: #eeeeee
+.app-card:hover
+    background: #fff
+    transition: .3s
+.app-card-content
+    padding: 5px
+    font-size: 14px
+    height: 104px
 h3.mt40
     margin-top: 40px
 

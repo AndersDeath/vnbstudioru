@@ -26,6 +26,10 @@ export class DataService {
     return this.http.get(this.apiUrl + 'search/set/', options);
   }
 
+  public getUlog(){
+      return this.http.get(this.apiUrl + 'ulog');
+  }
+
   public checkCaptcha(control) {
     const options =
       {

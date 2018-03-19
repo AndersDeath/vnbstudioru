@@ -10,6 +10,7 @@ import {PathService} from '../../services/path.service';
 export class MaterialAccordionListComponent {
   @Input() items: object;
   @Input() title: string;
+  @Input() tooltip: boolean = true;
   storageUrl: string;
   constructor(private path: PathService) {
       this.storageUrl =  this.path.getStorage();

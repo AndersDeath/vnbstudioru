@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class PathService {
-  mode = 'dev';
+  mode = '';
   apiUrl: string = (this.mode === 'dev') ? 'http://course.loc/' : 'http://api.vnbstudio.ru/';
 
   constructor() {
@@ -14,7 +14,7 @@ export class PathService {
   }
 
   public getStorage(): string {
-    return this.apiUrl + '/img/';
+    return this.apiUrl + 'img/';
   }
 
 }

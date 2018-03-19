@@ -7,10 +7,15 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './constants/route.constant';
 import { AppComponent } from './components/app/app.component';
 import { SitePageComponent, Chat } from './components/sitepage/sitePage.component';
+import { MainComponent } from './components/main/main.component';
+import { TagsComponent } from './components/tags/tags.component';
+import { SearchComponent } from './components/search/search.component';
+
 import { MaterialAccordionListComponent } from './components/materialAccordionList/materialAccordionList.component';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { DataService } from './services/data.service';
 import { PathService } from './services/path.service';
+import { StorageService } from './services/storage.service';
 
 import {
   MatAutocompleteModule,
@@ -46,6 +51,7 @@ import {
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
+import { UlogComponent } from './components/ulog/ulog.component';
 
 
 @NgModule({
@@ -53,7 +59,11 @@ import {
     AppComponent,
     SitePageComponent,
     MaterialAccordionListComponent,
-    Chat
+    Chat,
+    MainComponent,
+    TagsComponent,
+    SearchComponent,
+    UlogComponent
   ],
   entryComponents: [Chat],
   imports: [
@@ -97,7 +107,7 @@ import {
     RecaptchaModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [DataService,PathService],
+  providers: [DataService, PathService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

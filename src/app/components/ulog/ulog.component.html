@@ -1,0 +1,9 @@
+<span *ngFor="let i of ulog">
+    <span class="px40"></span>
+<mat-card class="main-card">
+  <h1>{{i.title}}</h1>
+  <p style="text-decoration:underline;">{{i.dateCreate | date:'HH:mm dd-MM-yyyy'}}</p>
+  <p [innerHTML]="i.text"></p>
+  <p>Проект: <span [innerHTML]="i.project"></span></p>
+</mat-card>
+</span>
